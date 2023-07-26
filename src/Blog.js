@@ -12,6 +12,11 @@ import Footer from './Footer';
 import post1 from './blog-post.1.md';
 import post2 from './blog-post.2.md';
 import post3 from './blog-post.3.md';
+import {
+  useDecision,
+} from '@optimizely/react-sdk'
+
+
 
 const sections = [
   { title: 'Technology', url: '#' },
@@ -79,11 +84,17 @@ const sidebar = {
 const defaultTheme = createTheme();
 
 export default function Blog() {
+    const [ sections_decision ] = useDecision('sections');
+    const variationKey = sections_decision.variationKey;
+    const isEnabled = sections_decision.enabled;
+    const section_items = Object.values(sections_decision.variables)
+    console.log(isEnabled, variationKey)
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="Blog" sections={sections} />
+        <Header title="Optimizely Blog" sections={section_items} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>

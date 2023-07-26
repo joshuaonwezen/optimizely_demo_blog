@@ -37,7 +37,7 @@ function Header(props) {
     <React.Fragment>
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
           { isEnabled &&
-            <Button size="small">{subscribe_title}</Button>
+            <Button id="subscribe-button" size="small">{subscribe_title}</Button>
           }
           <Typography
             component="h2"
@@ -49,7 +49,7 @@ function Header(props) {
           >
           {title}
         </Typography>
-        <Button variant="outlined" size="small" onClick={handleClickOpen}>
+        <Button id="signup-button" variant="outlined" size="small" onClick={handleClickOpen}>
           Sign up
         </Button>
       </Toolbar>
@@ -71,7 +71,7 @@ function Header(props) {
           </Link>
         ))}
       </Toolbar>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog id="subscribe-popup" open={open} onClose={handleClose}>
         <DialogTitle>Sign up</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -90,7 +90,7 @@ function Header(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={handleClose}>Sign up</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
