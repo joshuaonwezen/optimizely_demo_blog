@@ -10,21 +10,23 @@ function Sidebar(props) {
   const { archives, description, title } = props;
 
   return (
-    <Grid item xs={12} md={4}>
-      <Paper elevation={0} sx={{ p: 2, bgcolor: 'grey.200' }}>
+    <Grid item xs={12} md={4} id="sidebar">
+      <Paper elevation={0} sx={{ p: 2, bgcolor: 'grey.200' }} id="about">
         <Typography variant="h6" gutterBottom>
           {title}
         </Typography>
         <Typography>{description}</Typography>
       </Paper>
-      <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
-        Archives
-      </Typography>
-      {archives.map((archive) => (
-        <Link display="block" variant="body1" href={archive.url} key={archive.title}>
-          {archive.title}
-        </Link>
-      ))}
+      <div id="archives">
+        <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
+          Archives
+        </Typography>
+        {archives.map((archive) => (
+          <Link display="block" variant="body1" href={archive.url} key={archive.title}>
+            {archive.title}
+          </Link>
+        ))}
+      </div>
     </Grid>
   );
 }

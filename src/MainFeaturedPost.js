@@ -11,6 +11,7 @@ function MainFeaturedPost(props) {
 
   return (
     <Paper
+      id="featured-post"
       sx={{
         position: 'relative',
         backgroundColor: 'grey.800',

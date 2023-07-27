@@ -22,7 +22,6 @@ function Header(props) {
   const isEnabled = subscribe_decision.enabled;
   const subscribe_title = subscribe_decision.variables['subscribe_title'];
 
-  console.log(subscribe_decision)
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -35,7 +34,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Toolbar id="header" sx={{ borderBottom: 1, borderColor: 'divider' }}>
           { isEnabled &&
             <Button id="subscribe-button" size="small">{subscribe_title}</Button>
           }
@@ -63,6 +62,7 @@ function Header(props) {
             color="inherit"
             noWrap
             key={section.title}
+            id={"section-" + section.title.toLowerCase()}
             variant="body2"
             href={section.url}
             sx={{ p: 1, flexShrink: 0 }}
@@ -71,7 +71,7 @@ function Header(props) {
           </Link>
         ))}
       </Toolbar>
-      <Dialog id="subscribe-popup" open={open} onClose={handleClose}>
+      <Dialog id="signup-popup" open={open} onClose={handleClose}>
         <DialogTitle>Sign up</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -89,8 +89,8 @@ function Header(props) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Sign up</Button>
+          <Button id="signup-cancel" onClick={handleClose}>Cancel</Button>
+          <Button id="signup-accept" onClick={handleClose}>Sign up</Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>
