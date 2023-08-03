@@ -87,14 +87,14 @@ export default function Blog() {
     const [ sections_decision ] = useDecision('sections');
     const variationKey = sections_decision.variationKey;
     const isEnabled = sections_decision.enabled;
-    const section_items = Object.values(sections_decision.variables)
+    const optimizely_sections = Object.values(sections_decision.variables)
     console.log(isEnabled, variationKey)
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="Optimizely Blog" sections={section_items} />
+        <Header title="Optimizely Blog" sections={isEnabled ? optimizely_sections : sections} />
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
           <Grid container spacing={4}>
