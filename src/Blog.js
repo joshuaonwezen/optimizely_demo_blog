@@ -88,7 +88,6 @@ export default function Blog() {
     const variationKey = sections_decision.variationKey;
     const isEnabled = sections_decision.enabled;
     const optimizely_sections = Object.values(sections_decision.variables)
-    console.log(isEnabled, variationKey)
 
   return (
     <ThemeProvider theme={defaultTheme}>
