@@ -9,6 +9,11 @@ import Box from '@mui/material/Box';
 function MainFeaturedPost(props) {
   const { post } = props;
 
+  const handleClick = () => {
+    const { optimizely } = props;    
+    optimizely.track('continue_reading')
+  };
+
   return (
     <Paper
       id="featured-post"
@@ -50,7 +55,7 @@ function MainFeaturedPost(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href="#">
+            <Link onClick={handleClick} variant="subtitle1" href="#">
               {post.linkText}
             </Link>
           </Box>

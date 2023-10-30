@@ -12,7 +12,7 @@ import Footer from "./Footer";
 import post1 from "./blog-post.1.md";
 import post2 from "./blog-post.2.md";
 import post3 from "./blog-post.3.md";
-import { useDecision } from "@optimizely/react-sdk";
+import { useDecision, withOptimizely } from "@optimizely/react-sdk";
 
 // const [ sections_decision ] = useDecision('sections');
 // const variationKey = sections_decision.variationKey;
@@ -83,6 +83,9 @@ const sidebar = {
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
+const OptimizelyMainFeaturedPost = withOptimizely(MainFeaturedPost)
+
+
 
 export default function Blog() {
   const [banner] = useDecision("banner");
@@ -97,7 +100,7 @@ export default function Blog() {
       <Container maxWidth="lg">
         <Header title="Optimizely Blog" sections={sections} />
         <main>
-          {bannerEnabled ? <MainFeaturedPost post={mainFeaturedPost} /> : ""}
+          {bannerEnabled ? <OptimizelyMainFeaturedPost post={mainFeaturedPost} /> : ""}
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
