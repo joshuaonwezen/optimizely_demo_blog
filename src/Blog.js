@@ -83,31 +83,32 @@ const sidebar = {
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
-const OptimizelyMainFeaturedPost = withOptimizely(MainFeaturedPost)
-
-
+const OptimizelyMainFeaturedPost = withOptimizely(MainFeaturedPost);
 
 export default function Blog() {
   const [banner] = useDecision("banner");
   const bannerVariation = banner.variationKey;
   const bannerEnabled = banner.enabled;
-  const mainFeaturedPost = banner.variables
+  const mainFeaturedPost = banner.variables;
 
-  console.log(MainFeaturedPost, banner.variables)
   return (
     <ThemeProvider theme={defaultTheme}>
       <CssBaseline />
       <Container maxWidth="lg">
         <Header title="Optimizely Blog" sections={sections} />
         <main>
-          {bannerEnabled ? <OptimizelyMainFeaturedPost post={mainFeaturedPost} /> : ""}
+          {bannerEnabled ? (
+            <OptimizelyMainFeaturedPost post={mainFeaturedPost} />
+          ) : (
+            ""
+          )}
           <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
             ))}
           </Grid>
           <Grid container spacing={5} sx={{ mt: 3 }}>
-            <Main title="From the firehose" posts={posts} />
+            <Main title="Extras" posts={posts} />
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
@@ -116,10 +117,7 @@ export default function Blog() {
           </Grid>
         </main>
       </Container>
-      <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
-      />
+      <Footer title="Footer" description="Footer description" />
     </ThemeProvider>
   );
 }
