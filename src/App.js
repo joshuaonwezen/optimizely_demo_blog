@@ -17,7 +17,8 @@ export default function App() {
     console.log(decisionInfo);
     dataLayerObject.push({
       event: "decision_optimizely_fx",
-      exp_variant_string: decisionInfo.ruleKey + "-" + decisionInfo.variationKey,
+      optimizely_experiment: decisionInfo.ruleKey,
+      optimizely_variant: decisionInfo.variationKey,
     });
   };
 
