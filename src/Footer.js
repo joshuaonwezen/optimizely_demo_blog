@@ -35,6 +35,11 @@ function Footer(props) {
         >
           {description}
         </Typography>
+        <form id="contact-form" action="#">
+          <input type="text" placeholder="E-mail"></input>
+          <input type="text" placeholder="Type your message here"></input>
+          <input type="submit" value="Submit"></input>
+        </form>
         <Copyright />
       </Container>
     </Box>
